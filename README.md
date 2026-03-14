@@ -19,7 +19,7 @@ The system proves that a reliable communication link can be engineered using str
 * **Development Board:** [PYNQ-Z2](Insert_Link_Here) (Zynq-7000 SoC)
 * **Audio Codec:** Onboard ADAU1761 (Capturing audio via the 3.5mm TRRS jack at 48 kHz).
 * **Transmitter:** HW-508 Passive Piezoelectric Buzzer (Driven via PMODB GPIO using PWM).
-* **Microphone:** Commercial-grade electret headset microphone.
+* **Microphone:** Commercial-grade headset microphone.
 
 ![Insert Photo of Hardware Setup](Insert_Image_Link_Here)
 
@@ -35,13 +35,13 @@ To overcome execution overhead and latency inherent to Python, we developed a hy
 1. **Real-Time Mean Subtraction:** Eliminates hardware DC bias from the microphone by zero-centering the waveform before running the Goertzel loop.
 2. **Relative Ratio Thresholding:** Abandons absolute magnitude thresholds. A bit is only considered valid if its tone is at least 3x stronger than the competing frequency, mitigating ambient room noise.
 3. **UART Center-Sampling:** The C++ state machine hunts for the Start Bit's falling edge and delays its read until the exact center of the bit window to avoid acoustic phase-shift noise at the boundaries.
-4. **Hardware Drift Calibration:** The Goertzel engine is actively tuned to hunt for real-world frequencies (~4500 Hz ± 300 Hz) to compensate for PYNQ-specific PWM hardware drift.
+4. **Hardware Drift Calibration:** The Goertzel engine is actively tuned to hunt for real-world frequencies (~4500 Hz ± 300 Hz in this setup) to compensate for PYNQ-specific PWM hardware drift.
 
 ## 📈 Results & Known Limitations
 The system successfully functions as a full-duplex, air-gapped acoustic modem, capable of transmitting and decoding text across a room in real-time. 
 
 **Known Issues:**
-* **Bit Rejection:** The raw 8-N-1 UART stream lacks error correction. Prolonged room reverberation can induce bit-flips (e.g., decoding "genarob" instead of "genaro"). 
+* **Bit Rejection:** The raw 8-N-1 UART stream lacks error correction. Prolonged room reverberation can induce bit-flips
 * **RTOS Memory Fault:** The system consistently encounters a segmentation fault/core dump after ~60 seconds of continuous keyboard input. We suspect this is due to unmanaged thread collisions between blocking terminal inputs and the high-speed audio DMA streams.
 
 ## 🔮 Future Work
