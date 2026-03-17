@@ -13,12 +13,10 @@ This project establishes a robust, air-gapped data link using purely acoustic si
 
 ## ⚙️ Hardware Architecture
 The system proves that a reliable communication link can be engineered using strictly low-cost, low-fidelity components.
-* **Development Board:** [PYNQ-Z2](Insert_Link_Here) (Zynq-7000 SoC)
+* **Development Board:** [PYNQ-Z2](https://www.amd.com/en/corporate/university-program/aup-boards/pynq-z2.html) (Zynq-7000 SoC)
 * **Audio Codec:** Onboard ADAU1761 (Capturing audio via the 3.5mm TRRS jack at 48 kHz).
 * **Transmitter:** HW-508 Passive Piezoelectric Buzzer (Driven via PMODB GPIO using PWM).
 * **Microphone:** Commercial-grade headset microphone.
-
-![Insert Photo of Hardware Setup](Insert_Image_Link_Here)
 
 ## 💻 Software Architecture
 To overcome execution overhead and latency inherent to Python, we developed a hybrid hardware/software co-design utilizing a 4-thread architecture. 
