@@ -6,9 +6,6 @@
   - Genaro Salazar Ruiz
   - Alex McGee
 
-
-[![Demo Video](https://img.shields.io/badge/YouTube-Video_Demonstration-red.svg)](Insert_YouTube_Link_Here)
-
 ## 📌 Project Overview
 Reliable digital communication typically relies on RF or wired connections, leaving a gap in environments where RF is severely attenuated (e.g., underwater) or strictly prohibited (e.g., secure air-gapped facilities). 
 
